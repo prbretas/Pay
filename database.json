@@ -1,0 +1,24 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "fullName": "Philippe",
+        "phone": "47992144687",
+        "email": "phrbretas@gmail.com",
+        "numberDoc": 70427,
+        "cpf": 20089974862,
+        "password": "Aces1984",
+        "adress":{
+            "cep": 89211360,
+            "street": "Rua Olaria",
+            "region": "Floresta",
+            "city": "Joinville",
+            "state": "Santa Catarina",
+            "adressNumber": 753,
+            "complement":"Apto 401"
+        },
+        "billingDate": "07",
+        "acceptTerms": true
+      }
+    ]
+  }
