@@ -1,3 +1,6 @@
+import { commonStyles } from "../../styles/commonStyles";
+import React, { useState } from "react";
+
 import {
   StyleSheet,
   Text,
@@ -9,35 +12,37 @@ import {
   TextInput,
   ImageBackground,
   TouchableOpacity,
+  Switch,
 } from "react-native";
 
-export default function Terms({navigation}) {
+export default function Terms({ navigation }) {
+  function navigateToAdress() {
+    console.log("Going from Terms to PayDate");
+    navigation.navigate("PayDate");
+  }
 
-  function navigateToAdress(){
-    console.log('Going from Terms to PayDate')
-    navigation.navigate('PayDate')
-      }
-    
-    function navigateToLogin(){
-      console.log('Going from Terms to Home')
-      navigation.navigate('Home')
-      alert('Conta criada com Sucesso!')
-    
-    }
+  function navigateToLogin() {
+    console.log("Going from Terms to Home");
+    navigation.navigate("Home");
+    alert("Conta criada com Sucesso!");
+  }
 
-
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   return (
     <ScrollView>
-      <View style={styles.container}>
+      <View style={commonStyles.container}>
         <StatusBar
           style="auto"
           backgroundColor={"#399B53"}
           barStyle={"default"}
         />
 
-        <View style={styles.card}>
-          <Text style={styles.textAccount}>Termos de Uso</Text>
+        <View>
+          <Text style={{ ...commonStyles.textHeader, alignSelf: "center" }}>
+            Termos de Uso
+          </Text>
 
           <Text style={styles.textTerms}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
@@ -93,103 +98,69 @@ export default function Terms({navigation}) {
           </Text>
         </View>
 
-        <View style={styles.divButtons}>
-          <TouchableOpacity 
-          style={{...styles.button,backgroundColor:'#FFF', borderColor:'#399B53'}}
-          activeOpacity={0.6}
-          onPress={navigateToAdress}
+        <View style={styles.divSwitch}>
+          <Text style={{marginRight:10, fontSize:16,}}>Aceito os Termos</Text>
+          <Switch
+            trackColor={{ false: "#767577", true: "#B1D7B4" }}
+            thumbColor={isEnabled ? "#399B53" : "#f4f3f4"}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={toggleSwitch}
+            value={isEnabled}
+          />
+        </View>
+
+        {/* **************************** BUTTONS  ************************** */}
+        <View style={commonStyles.divButtons}>
+          <TouchableOpacity
+            style={{
+              ...commonStyles.button,
+              backgroundColor: "#FFF",
+              borderColor: "#399B53",
+            }}
+            activeOpacity={0.6}
+            onPress={navigateToAdress}
           >
-            <Text style={{...styles.textButton, color:'#399B53'}}>Voltar</Text>
+            <Text style={{ ...commonStyles.textButton, color: "#399B53" }}>
+              Voltar
+            </Text>
           </TouchableOpacity>
 
-        <TouchableOpacity
-        style={{...styles.button, borderColor:'#FFF'}}
-        activeOpacity={0.4}
-        onPress={navigateToLogin}
-        >
-          <Text style={{...styles.textButton, fontWeight:'bold',}}>Aceitar os Termos</Text>
-        </TouchableOpacity>
-
-</View>
+          <TouchableOpacity
+            style={{ ...commonStyles.button, borderColor: "#FFF" }}
+            activeOpacity={0.4}
+            onPress={navigateToLogin}
+          >
+            <Text style={{ ...commonStyles.textButton, fontWeight: "bold" }}>
+              Aceitar os Termos
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#FFF",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100%",
-  },
-
-cards:{
+  cards: {
     width: "80%",
     height: "90%",
     elevation: 10,
-    backgroundColor: '#FFF'
-},
-
-textAccount:{
-  fontSize: 26,
-  color:'#399B53',
-  marginTop: 20,
-  marginBottom: 25,
-  fontWeight:'bold',
-  textAlign: "center",
+    backgroundColor: "#FFF",
   },
-
 
   textTerms: {
     fontSize: 18,
     color: "#000",
     marginBottom: 20,
     marginHorizontal: 20,
-   textAlign:'justify'
+    textAlign: "justify",
   },
 
-  input: {
-    width: "90%",
-    height: 50,
-    backgroundColor: "#FFF",
-    color: "#399B53",
-    fontSize: 20,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "#DDD",
-    borderStyle: "solid",
-    paddingLeft: 15,
-    alignSelf: "center",
-    marginBottom: 30,
-    elevation: 5,
-  },
+  divSwitch: {
+display:'flex',
+flexDirection:'row',
+alignItems:'center',
+justifyContent:'center'
 
-  divButtons: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-  },
-
-  button: {
-    width: "40%",
-    height: 50,
-    backgroundColor: "#399B53",
-    borderRadius: 15,
-    borderWidth: 1,
-    borderColor: "#FFF",
-    borderStyle: "solid",
-    alignItems: "center",
-    justifyContent: "center",
-    elevation: 10,
-    marginHorizontal: 20,
-    marginTop: 20,
-    marginBottom: 50,
-  },
-  textButton: {
-    fontSize: 16,
-    color: "#FFF",
   },
 });

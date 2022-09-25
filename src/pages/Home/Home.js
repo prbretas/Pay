@@ -1,6 +1,9 @@
 import LottieView from 'lottie-react-native';
 import React, { useRef, useEffect } from 'react';
 
+
+export const API = ''
+
 import {
   StyleSheet,
   Text,
