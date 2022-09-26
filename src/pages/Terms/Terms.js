@@ -99,7 +99,9 @@ export default function Terms({ navigation }) {
         </View>
 
         <View style={styles.divSwitch}>
-          <Text style={{marginRight:10, fontSize:16,}}>Aceito os Termos</Text>
+          <Text style={{ marginRight: 10, fontSize: 16 }}>
+            Aceito os Termos
+          </Text>
           <Switch
             trackColor={{ false: "#767577", true: "#B1D7B4" }}
             thumbColor={isEnabled ? "#399B53" : "#f4f3f4"}
@@ -157,10 +159,9 @@ const styles = StyleSheet.create({
   },
 
   divSwitch: {
-display:'flex',
-flexDirection:'row',
-alignItems:'center',
-justifyContent:'center'
-
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

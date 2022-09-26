@@ -25,32 +25,20 @@ export default function Account({ navigation }) {
       />
 
       <View style={styles.header}>
-
-
-      <Text style={ styles.textHeader}>PERFIL</Text>
-      <Text style={ styles.textHeader}>
-          Dados da Conta
-        </Text>
-        </View>
-
-
-      <View style={styles.divProfile}>
-        <Text style={styles.ProfileName}>
-          #user9774410
-        </Text>
-
-        <TouchableOpacity activeOpacity={0.6}>
-        <Image
-          source={require("../../../assets/Logo-PNG.png")}
-          style={styles.ProfileImg}
-        />
-        </TouchableOpacity>
+        <Text style={styles.textHeader}>PERFIL</Text>
+        <Text style={styles.textHeader}>Dados da Conta</Text>
       </View>
 
+      <View style={styles.divProfile}>
+        <Text style={styles.ProfileName}>#user9774410</Text>
 
-
-
-
+        <TouchableOpacity activeOpacity={0.6}>
+          <Image
+            source={require("../../../assets/Logo-PNG.png")}
+            style={styles.ProfileImg}
+          />
+        </TouchableOpacity>
+      </View>
 
       <View style={styles.divAccountDetails}>
         <Text style={{ ...styles.textAccountDetails, color: "#FFF" }}>
@@ -70,12 +58,6 @@ export default function Account({ navigation }) {
         </Text>
       </View>
 
-
-
-
-
-
-
       <TouchableOpacity
         style={{
           ...styles.button,
@@ -89,10 +71,6 @@ export default function Account({ navigation }) {
           Sair da Conta
         </Text>
       </TouchableOpacity>
-
-
-
-
     </SafeAreaView>
   );
 }
@@ -106,30 +84,27 @@ const styles = StyleSheet.create({
     height: "100%",
   },
 
-  header:{
-    marginVertical:30,
+  header: {
+    marginVertical: 30,
   },
 
   textHeader: {
     fontSize: 20,
     color: "#FFF",
     fontWeight: "bold",
-    textAlign:'center',
+    textAlign: "center",
   },
-
-
 
   divProfile: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: 'space-between',
-    padding:10,
+    justifyContent: "space-between",
+    padding: 10,
     width: "80%",
-
   },
 
-  ProfileName:{
+  ProfileName: {
     fontSize: 20,
     color: "#FFF",
     fontWeight: "bold",
@@ -142,13 +117,11 @@ const styles = StyleSheet.create({
     borderRadius: 150,
   },
 
-
-  divAccountDetails:{
-    padding:10,
-     width: "80%",
+  divAccountDetails: {
+    padding: 10,
+    width: "80%",
     minHeight: 200,
-    },
-
+  },
 
   button: {
     width: "70%",
@@ -169,8 +142,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "#FFF",
     fontWeight: "bold",
-    textAlign:'center',
+    textAlign: "center",
   },
-
- 
 });

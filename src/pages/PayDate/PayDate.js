@@ -1,14 +1,7 @@
-
-
-import React, { Component, useEffect } from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { commonStyles } from "../../styles/commonStyles";
-
-import { Calendar } from 'react-native-calendars'
-
-import CalendarPicker from 'react-native-calendar-picker';
-
+import { Calendar, CalendarList, Agenda } from "react-native-calendars";
 
 import {
   StyleSheet,
@@ -21,30 +14,21 @@ import {
   TextInput,
   ImageBackground,
   TouchableOpacity,
-  Button,
-  Platform,
 } from "react-native";
 
+export default function PayDate({ navigation }) {
+  const [item, setItem] = useState("");
+  const [date, setDate] = useState("");
 
+  function navigateToSubscribe() {
+    console.log("Going from PayDate to Adress");
+    navigation.navigate("Adress");
+  }
 
-
-export default function PayDate({navigation}) {
-
-
- 
-  function navigateToSubscribe(){
-    console.log('Going from PayDate to Adress')
-    navigation.navigate('Adress')
-      }
-    
-    function navigateToTerms(){
-      console.log('Going from PayDate to Terms')
-      navigation.navigate('Terms')
-    
-    }
-
-
-
+  function navigateToTerms() {
+    console.log("Going from PayDate to Terms");
+    navigation.navigate("Terms");
+  }
 
   return (
     <SafeAreaView style={commonStyles.container}>
@@ -55,10 +39,35 @@ export default function PayDate({navigation}) {
       />
 
       <Text style={commonStyles.textHeader}>Data de cobrança</Text>
+      <Text style={styles.textCalendar}>Selecione um dia</Text>
 
-
-
-
+      <Calendar
+        style={styles.calendarStyle}
+        onDayPress={(day) => {
+          setItem(day.dateString);
+          console.log(day);
+        }}
+        hideExtraDays={true}
+        minDate={"2022-09-25"}
+        // Collection of dates that have to be marked. Default = {}
+        markedDates={{
+          [item]: {
+            selected: true,
+            marked: true,
+            selectedColor: "red",
+            dotColor: "#FFF",
+          },
+        }}
+        theme={{
+          calendarBackground: "#399B53",
+          selectedDayTextColor: "#FFF",
+          todayTextColor: "#00FF0E",
+          dayTextColor: "#FFF",
+          arrowColor: "#00FF0E",
+          monthTextColor: "#FFF",
+          textDayFontWeight: "400",
+        }}
+      />
 
       <View style={commonStyles.divButtons}>
         <TouchableOpacity
@@ -70,7 +79,9 @@ export default function PayDate({navigation}) {
           activeOpacity={0.6}
           onPress={navigateToSubscribe}
         >
-          <Text style={{ ...commonStyles.textButton, color: "#399B53" }}>Voltar</Text>
+          <Text style={{ ...commonStyles.textButton, color: "#399B53" }}>
+            Voltar
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -88,8 +99,17 @@ export default function PayDate({navigation}) {
 }
 
 const styles = StyleSheet.create({
-
-
+  textCalendar: {
+    color: "#000",
+    fontSize: 18,
+    marginBottom: 10,
+  },
+  calendarStyle: {
+    backgroundColor: "#399B53",
+    height: 400,
+    width: 300,
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: 50,
+  },
 });
-
-
